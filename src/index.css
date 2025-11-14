@@ -76,7 +76,6 @@
         @apply w-full h-[240vh] flex flex-col py-20 px-10 sm:py-24 md:px-10 md:py-10;
     }
     /* Footer styles moved to component */
-    background-color: antiquewhite;
 }
 
 @layer components {
