@@ -1,4 +1,4 @@
-import React, { createContext, useState, useRef } from 'react';
+import React, { createContext, useState, useRef, useCallback } from 'react';
 import { gsap } from 'gsap';
 
 export const TransitionContext = createContext();
@@ -7,7 +7,7 @@ export const TransitionProvider = ({ children }) => {
     const [timeline, setTimeline] = useState(null);
     const overlayRef = useRef(null);
 
-    const setupTimeline = () => {
+    const setupTimeline = useCallback(() => {
         const tl = gsap.timeline({ paused: true });
         tl.to(overlayRef.current, {
             duration: 0.5,
@@ -16,7 +16,7 @@ export const TransitionProvider = ({ children }) => {
             ease: 'power2.inOut',
         });
         setTimeline(tl);
-    };
+    }, []);
 
     const playIn = (onComplete) => {
         if (timeline) {

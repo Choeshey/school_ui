@@ -14,22 +14,22 @@ const withCurtainRaiser = (WrappedComponent) => {
 
             // Set initial states
             gsap.set(contentRef.current, { autoAlpha: 0 });
-            gsap.set(curtain1Ref.current, { scaleX: 1 });
-            gsap.set(curtain2Ref.current, { scaleX: 1 });
+            gsap.set(curtain1Ref.current, { scaleY: 1 });
+            gsap.set(curtain2Ref.current, { scaleY: 1 });
 
             // The animation timeline
             tl
                 .to(curtain1Ref.current, {
-                    scaleX: 0,
+                    scaleY: 0,
                     duration: 0.6,
                     ease: 'power2.inOut',
-                    transformOrigin: 'left'
+                    transformOrigin: 'top'
                 })
                 .to(curtain2Ref.current, {
-                    scaleX: 0,
+                    scaleY: 0,
                     duration: 0.6,
                     ease: 'power2.inOut',
-                    transformOrigin: 'right'
+                    transformOrigin: 'bottom'
                 }, "-=0.4")
                 .to(contentRef.current, {
                     autoAlpha: 1,
@@ -45,8 +45,8 @@ const withCurtainRaiser = (WrappedComponent) => {
                 className="relative bg-white overflow-hidden"
             >
                 {/* Curtains */}
-                <div ref={curtain1Ref} className="absolute top-0 left-0 w-1/2 h-full bg-[#009B4D] z-20" />
-                <div ref={curtain2Ref} className="absolute top-0 right-0 w-1/2 h-full bg-[#009B4D] z-20" />
+                <div ref={curtain1Ref} className="absolute top-0 left-0 w-1/2 h-full bg-black z-20" />
+                <div ref={curtain2Ref} className="absolute top-0 right-0 w-1/2 h-full bg-black z-20" />
 
                 {/* Wrapped Page Content */}
                 <div ref={contentRef} style={{ visibility: 'hidden' }}>
